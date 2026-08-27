@@ -156,7 +156,7 @@ const CONTENT = {
   /* What the box in the corner opens. Leave heading/note as "" and
      it's just the photo, like the album.                          */
   gift: {
-    heading: "",
+    heading: "Hope this is what you wanted most :3",
     photo:   "images/gift/01.jpg",
     note:    "",
   },
