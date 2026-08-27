@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FFF6E9">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>For Chelsea 💛</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐈‍⬛</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Caveat:wght@500;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css?v=31">
+<link rel="stylesheet" href="css/animations.css?v=31">
+</head>
+<body class="locked">
+
+<!-- ================= FRONT DOOR ================= -->
+<div id="reveal" class="reveal">
+  <div class="reveal__inner">
+    <p class="reveal__tease" id="revealTease"></p>
+
+    <button class="door" id="door" aria-label="Come in">
+      <svg viewBox="0 0 220 320" class="door__svg" aria-hidden="true">
+        <rect x="6" y="6" width="208" height="308" rx="10" fill="#B07A4E" stroke="#2B2B3A" stroke-width="6"/>
+        <g class="door__panel">
+          <rect x="20" y="20" width="180" height="280" rx="6" fill="#D89A63" stroke="#2B2B3A" stroke-width="5"/>
+          <rect x="42" y="44" width="136" height="98" rx="5" fill="#C08850" stroke="#2B2B3A" stroke-width="4"/>
+          <rect x="42" y="166" width="136" height="112" rx="5" fill="#C08850" stroke="#2B2B3A" stroke-width="4"/>
+          <circle cx="166" cy="160" r="9" fill="#FFC93C" stroke="#2B2B3A" stroke-width="4"/>
+          <!-- Luna waiting on the other side -->
+          <g class="door__peek">
+            <ellipse cx="110" cy="272" rx="26" ry="17" fill="#8F9BB3"/>
+            <circle cx="110" cy="248" r="18" fill="#9BA7BE"/>
+            <path d="M97 236 l1 -15 13 9 Z" fill="#9BA7BE"/>
+            <path d="M123 236 l-1 -15 -13 9 Z" fill="#9BA7BE"/>
+            <circle cx="103" cy="248" r="2.8" fill="#2B2B3A"/>
+            <circle cx="117" cy="248" r="2.8" fill="#2B2B3A"/>
+            <path d="M107 255 q3 3 6 0" stroke="#2B2B3A" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </g>
+        </g>
+      </svg>
+      <span class="door__label" id="revealBtn"></span>
+    </button>
+
+    <form class="lock" id="lockForm" hidden>
+      <input class="lock__input" id="lockInput" inputmode="numeric" pattern="[0-9]*"
+             autocomplete="off" maxlength="4" placeholder="••••" aria-label="Four digit passcode">
+      <button class="btn" type="submit">Unlock</button>
+      <p class="lock__hint" id="lockHint"></p>
+      <p class="lock__err" id="lockErr" hidden>Not quite. Try again 💭</p>
+    </form>
+  </div>
+</div>
+
+<canvas id="confetti" class="confetti" aria-hidden="true"></canvas>
+
+<!-- ================= THE ROOM ================= -->
+<div class="stage" id="stage" aria-hidden="true">
+  <div class="scene__box">
+    <svg id="scene" class="scene" viewBox="130 18 940 762" role="group" aria-label="A room you can click around"></svg>
+  </div>
+
+  <!-- Luna's tamagotchi panel -->
+  <aside class="hud" id="hud">
+    <div class="hud__top">
+      <span class="hud__av" id="hudAv">
+        <img class="hud__av-img" id="hudAvImg" alt="" hidden>
+        <span class="hud__av-mood" id="hudFace">🐈‍⬛</span>
+      </span>
+      <p class="hud__name" id="hudName"></p>
+    </div>
+    <div class="meter"><span class="meter__l">full</span>
+      <div class="meter__track"><i class="meter__fill meter__fill--food" id="mFood"></i></div></div>
+    <div class="meter"><span class="meter__l">happy</span>
+      <div class="meter__track"><i class="meter__fill meter__fill--happy" id="mHappy"></i></div></div>
+    <div class="hud__btns">
+      <button class="hbtn" id="bFeed">🍽️ Feed</button>
+      <button class="hbtn" id="bPlay">🧶 Play</button>
+      <button class="hbtn" id="bPet">🫳 Pet</button>
+    </div>
+  </aside>
+</div>
+
+<!-- ================= MODAL ================= -->
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true">
+  <div class="modal__card" id="modalCard">
+    <button class="modal__x" id="modalX" aria-label="Close">✕</button>
+    <h2 class="modal__title" id="modalTitle"></h2>
+    <div class="modal__body" id="modalBody"></div>
+  </div>
+</div>
+
+<script src="content/content.js?v=31"></script>
+<script src="js/app.js?v=31"></script>
+<script src="js/posters.js?v=31"></script>
+<script src="js/room.js?v=31"></script>
+<script src="js/panels.js?v=31"></script>
+<script src="js/luna.js?v=31"></script>
+<script src="js/main.js?v=31"></script>
+</body>
+</html>

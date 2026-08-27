@@ -1,0 +1,89 @@
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes popIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+@keyframes revealOut{0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.15);visibility:hidden}}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+@keyframes peek{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes shake{
+  10%,90%{transform:translateX(-2px)}  20%,80%{transform:translateX(4px)}
+  30%,50%,70%{transform:translateX(-7px)}  40%,60%{transform:translateX(7px)}
+}
+@keyframes twinkle{
+  0%,100%{opacity:.55;transform:scale(.85)}
+  50%    {opacity:1;transform:scale(1.2)}
+}
+@keyframes floatUp{
+  0%  {opacity:1;transform:translate(0,0) scale(.7)}
+  100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.2)}
+}
+
+/* ---- Luna ---- */
+@keyframes lunaLegs{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes lunaTail{0%,100%{transform:rotate(0)}50%{transform:rotate(-10deg)}}
+@keyframes lunaBreath{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.05)}}
+@keyframes lunaBlink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.08)}}
+@keyframes lunaBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes zzz{0%{opacity:0;transform:translate(0,0) scale(.6)}30%{opacity:1}100%{opacity:0;transform:translate(14px,-26px) scale(1)}}
+
+.luna .l-tail{transform-origin:92px 50px;animation:lunaTail 1.2s ease-in-out infinite}
+.luna .l-eye{transform-origin:center;animation:lunaBlink 4.6s ease-in-out infinite}
+.luna .l-torso{transform-origin:58px 52px}
+
+/* walking */
+.luna[data-mode="walk"] .l-legs rect{animation:lunaLegs .26s ease-in-out infinite}
+.luna[data-mode="walk"] .l-legs rect:nth-child(2){animation-delay:.065s}
+.luna[data-mode="walk"] .l-legs rect:nth-child(3){animation-delay:.13s}
+.luna[data-mode="walk"] .l-legs rect:nth-child(4){animation-delay:.195s}
+.luna[data-mode="walk"] .l-head{animation:lunaLegs .52s ease-in-out infinite}
+
+/* sitting: back legs tuck away */
+.luna[data-mode="sit"] .l-legs rect:nth-child(3),
+.luna[data-mode="sit"] .l-legs rect:nth-child(4){opacity:0}
+.luna[data-mode="sit"] .l-torso{transform:translateY(4px) scaleY(.92)}
+
+/* loaf: a brick with a face */
+.luna[data-mode="loaf"] .l-legs{opacity:0}
+.luna[data-mode="loaf"] .l-torso{transform:translateY(9px) scaleY(.78) scaleX(1.04)}
+.luna[data-mode="loaf"] .l-head{transform:translateY(9px)}
+.luna[data-mode="loaf"] .l-tail{animation-duration:2.6s}
+
+/* asleep */
+.luna[data-mode="sleep"] .l-legs{opacity:0}
+.luna[data-mode="sleep"] .l-torso{transform:translateY(11px) scaleY(.7) scaleX(1.08);animation:lunaBreath 3s ease-in-out infinite}
+.luna[data-mode="sleep"] .l-head{transform:translateY(12px)}
+.luna[data-mode="sleep"] .l-eye{opacity:0}
+.luna[data-mode="sleep"] .l-eyeO{opacity:1}
+.luna[data-mode="sleep"] .l-tail{animation:none}
+
+/* eating: head dips */
+.luna[data-mode="eat"] .l-head{animation:lunaLegs .35s ease-in-out infinite}
+
+/* playing: pure chaos */
+.luna[data-mode="play"] .luna__body{animation:lunaBounce .32s ease-in-out infinite}
+.luna[data-mode="play"] .l-tail{animation-duration:.35s}
+
+#toy.wiggle{animation:lunaBounce .18s ease-in-out 4}
+
+/* ---- reduced motion ---- */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+}
+
+/* ---- the projector ---- */
+@keyframes beamFlicker{0%,100%{opacity:1}47%{opacity:.9}52%{opacity:1}78%{opacity:.94}}
+@keyframes lensPulse{0%,100%{opacity:.85;r:5}50%{opacity:1;r:6.4}}
+@keyframes screenGlow{0%,100%{opacity:1}50%{opacity:.965}}
+#beam{animation:beamFlicker 5.5s ease-in-out infinite;mix-blend-mode:screen}
+#lensGlow{animation:lensPulse 3.2s ease-in-out infinite}
+.screen__face{animation:screenGlow 4.4s ease-in-out infinite}
+#screenTitle,#screenPlay{pointer-events:none}
+
+/* ---- the two of you ---- */
+@keyframes sleeperBreath{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.6px)}}
+.sleeper{animation:sleeperBreath 4.2s ease-in-out infinite;animation-delay:calc(var(--i) * .9s)}
